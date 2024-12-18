@@ -1,38 +1,37 @@
 const {db} = require("../db.js");
 
 class DBQuery {
-  static async createUser(name, email) {
+  static async createRecord(name, form_data) {
     const query = `
-      INSERT INTO user (name, email, created_at, updated_at)
+      INSERT INTO records (name, form_data, created_at, updated_at)
       VALUES (?, ?, NOW(), NOW())
     `;
-    return db.execute(query, [name, email]);
+    return db.execute(query, [name, form_data]);
   }
 
-  static async getAllUser() {
-    const query = "SELECT * FROM user";
+  static async getAllRecords() {
+    const query = "SELECT * FROM records";
     return db.execute(query);
   }
 
-  static async getUserById(id) {
-    const query = "SELECT * FROM user WHERE id = ?";
+  static async getRecordById(id) {
+    const query = "SELECT * FROM records WHERE id = ?";
     return db.execute(query, [id]);
   }
 
-  static async updateUser(id, name, form_data) {
+  static async updateRecord(id, name, form_data) {
     const query = `
-      UPDATE user 
-      SET name = ?, updated_at = NOW() 
+      UPDATE records 
+      SET name = ?, form_data = ?, updated_at = NOW() 
       WHERE id = ?
     `;
-    return db.execute(query, [name, id]);
+    return db.execute(query, [name, form_data, id]);
   }
 
-  static async deleteUser(id) {
-    const query = "DELETE FROM user WHERE id = ?";
+  static async deleteRecord(id) {
+    const query = "DELETE FROM records WHERE id = ?";
     return db.execute(query, [id]);
   }
 }
-
 
 module.exports = DBQuery;

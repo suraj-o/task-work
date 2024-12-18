@@ -2,12 +2,12 @@ version: '3.1'
 
 services:
 
-  server:
-    build:
-      context: .
-      dockerfile: /dockerfile
-    ports:
-      - 3000:3000
+  # server:
+    # build:
+    #   context: .
+    #   dockerfile: /dockerfile
+    # ports:
+    #   - 3000:3000
 
   db:
     container_name: sqlDB

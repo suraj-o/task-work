@@ -1,5 +1,5 @@
 const express = require("express");
-const userRoutes = require("./routes/user.js");
+const recordRoutes = require("./routes/user.js");
 const {DataBase} = require("./database/db.js")
 require("dotenv");
 
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
     res.send("Welcome to the Server");
 });
 
-app.use("/api/user", userRoutes);
+app.use("/api/user", recordRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
